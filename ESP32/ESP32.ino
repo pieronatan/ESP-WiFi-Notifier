@@ -18,8 +18,7 @@ void sendMessage(String message){
   int httpResponseCode = http.POST("");
   if (httpResponseCode == 200){
     Serial.println("Message sent successfully");
-  }
-  else{
+  } else{
     Serial.println("Error sending the message");
     Serial.println("HTTP response code: ");
     Serial.println(httpResponseCode);
@@ -36,20 +35,15 @@ void setup() {
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("Connected to WiFi network with IP Address: ");
+  Serial.print("Connected to WiFi network with IP Address: ");
   Serial.println(WiFi.localIP());
 }
 
 void loop() {
   int voltage = analogRead(VP_PIN);
-
   float voltageValue = (voltage / 4095.0) * 3.3;
-  Serial.println(voltageValue);
-
   if (voltageValue > 2){
-    Serial.println(voltageValue);
-    sendMessage("Hello from ESP32!");
+    sendMessage("Interfone tocando!");
   }
-
   delay(1000);
 }
